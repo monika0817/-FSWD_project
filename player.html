@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script3.js" defer></script>
+    <link rel="stylesheet" href="style3.css">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Playlist2 Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url("https://images.hdqwalls.com/wallpapers/glowing-triangle-neon-pq.jpg");
+            background-size: cover;
+            margin:auto;
+            position:relative;
+            height: 100vh;
+        }
+
+        #navbar2 {
+            margin:auto;
+            display: flex;
+            align-self:flex-end;
+            align-items: end;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .navbar-button {
+            background-color: #4caf4f00;
+            position: relative;
+            color: #fff;
+            padding: 10px 20px;
+            border: 10px;
+            border-color: rgb(252, 252, 252);
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            margin:auto;
+        }
+        #playlist-icon {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+
+        #playlist-title {
+            color:aliceblue;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .navbar-button:hover {
+            background-color: #45a049;
+        }
+
+        #playlist-container {
+            margin:auto;
+            width: 80%;
+            background-color:rgba(133, 133, 133, 0.54);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            align-self: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #playlist-output {
+            margin-top: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1" style="display: block;">
+    <div id="navbar">
+        <div>
+            <span id="playlist-icon">&#127925;</span>
+            <span id="playlist-title">Playlist</span>
+        </div>
+    </div>
+    <div id="navbar2">        
+        <button class="navbar-button" onclick="showMoodSection()">Mood</button>
+        <button class="navbar-button" onclick="showGenreSection()">Genre</button>
+    </div>
+
+    <div id="playlist-container">
+        <div id="mood-section">
+            <label for="mood">Select your mood:</label>
+            <select id="mood">
+                <option value="happy">Happy</option>
+                <option value="sad">Sad</option>
+                <option value="energetic">Energetic</option>
+                <option value="calm">Calm</option>
+            </select>
+            <button class="navbar-button" onclick="generateMoodPlaylist(moodPlaylists)">Generate Mood Playlist</button>
+        </div>
+
+        <div id="genre-section" style="display: none;">
+            <label for="genre">Select your favorite genre:</label>
+            <select id="genre">
+                <option value="pop">Pop</option>
+                <option value="rock">Rock</option>
+                <option value="hiphop">Hip Hop</option>
+                <option value="electronic">Electronic</option>
+            </select>
+            <button class="navbar-button" onclick="generateGenrePlaylist(genrePlaylists)">Generate Genre Playlist</button>
+        </div>
+
+        <div id="mood-playlist-output"></div>
+        <div id="genre-playlist-output" style="display: none;"></div>
+    </div>
+        <div class="theButton">
+        <button onclick="initial()">Player</button>
+    </div>
+    </div>
+    <div id="div2" style="display: none;">
+    <div class="player">
+        <div class="wrapper">
+            <div class="details">
+                <div class="now-playing">PLAYING x OF y</div>
+                <div class="track-art"></div>
+                <div class="track-name">Track Name</div>
+                <div class="track-artist">Track Artist</div>
+            </div>
+ 
+            <div class="slider_container">
+                <div class="current-time">00:00</div>
+                 <input type="range" min="1" max="100" value="0" class="seek_slider" onchange="seekTo()">
+                 <div class="total-duration">00:00</div>
+            </div>
+ 
+            <div class="slider_container">
+                <i class="fa fa-volume-down"></i>
+                 <input type="range" min="1" max="100" value="99" class="volume_slider" onchange="setVolume()">
+                 <i class="fa fa-volume-up"></i>
+            </div>
+ 
+            <div class="buttonsz">
+                <div class="random-track" onclick="randomTrack()">
+                    <i class="fas fa-random fa-2x" title="random"></i>
+                </div>
+                <div class="prev-track" onclick="prevTrack()">
+                     <i class="fa fa-step-backward fa-2x"></i>
+                 </div>
+                 <div class="playpause-track" onclick="playpauseTrack()">
+                     <i class="fa fa-play-circle fa-5x"></i>
+                 </div>
+                 <div class="next-track" onclick="nextTrack()">
+                     <i class="fa fa-step-forward fa-2x"></i>
+                 </div>
+                 <div class="repeat-track" onclick="repeatTrack()">
+                     <i class="fa fa-repeat fa-2x" title="repeat"></i>
+                 </div>
+                 
+            </div>
+            <div>
+                <button onclick="back()">Back</button>
+            </div>
+  
+        </div>
+        
+    </div>
+    </div>
+</body>
+</html>

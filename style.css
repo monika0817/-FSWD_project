@@ -1,0 +1,87 @@
+@import url("https://fonts.googlepis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+
+.icon{
+    background-image:url("https://images7.alphacoders.com/976/thumb-1920-976903.jpg") ;
+    background-size: cover;
+    height: 100vh;
+    margin:auto;
+}
+.head{
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:xx-large;
+    font-style:normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.main{
+    color: #0FF;
+    text-align: center;
+    font-family:jokerman;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.wrapper{
+    align-items:center;
+    margin:auto;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height:300px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    border: 4px solid #000;
+    background: rgba(50, 60, 149, 0.57);
+}
+.wrapper.input-box{
+    width:100%;
+    height:60px;
+    margin:30px 0;
+}
+.input-box input{
+    width:80%;
+    height:70%;
+    border:none;
+    border-radius: 50px;
+    padding:10px 25px 10px 10px;
+}
+.input-box input::placeholder{
+    color:#000;
+}
+.wrapper .btn{
+    margin:auto;
+    width:100%;
+    height:35px;
+    background-color:rgb(42, 42, 195) ;
+    border: none;
+    border-radius: 50px;
+    cursor:pointer;
+    
+
+}
+.wrapper .register-link{
+    color:aliceblue;
+}
+.wrapper .register-link{
+    font-size:14.5px;
+    text-align: center;
+    margin: 20px 0 15px;
+
+}
+.register-link p a{
+    color:greenyellow;
+    text-decoration:none;
+}
+.remember-forgot a{
+    color: white;
+    text-decoration: underline;
+}
+.remember-forgot label input{
+    color:white;
+    margin-right:3px;
+}
